@@ -1,0 +1,44 @@
+{
+  "annotations": { "list": [] },
+  "panels": [
+    {
+      "type": "graph",
+      "title": "HTTP Requests per Second",
+      "targets": [
+        {
+          "expr": "rate(tsdb_requests_total[1m])",
+          "legendFormat": "{{method}} {{endpoint}}"
+        }
+      ],
+      "yaxes": [{ "format": "req/s" }, { "format": "short" }]
+    },
+    {
+      "type": "graph",
+      "title": "Request Latency (p95)",
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.95, sum(rate(tsdb_request_latency_seconds_bucket[5m])) by (le))",
+          "legendFormat": "p95"
+        }
+      ]
+    },
+    {
+      "type": "graph",
+      "title": "Memory Usage (RSS)",
+      "targets": [
+        { "expr": "tsdb_memory_bytes", "legendFormat": "memory" }
+      ],
+      "yaxes": [{ "format": "bytes" }]
+    },
+    {
+      "type": "graph",
+      "title": "Ingestion Rate",
+      "targets": [
+        { "expr": "rate(tsdb_ingestion_total[1m])", "legendFormat": "ingest/s" }
+      ],
+      "yaxes": [{ "format": "req/s" }]
+    }
+  ],
+  "schemaVersion": 16,
+  "title": "TSDB Monitoring"
+}

@@ -1,0 +1,20 @@
+tsdb_project/
+├── docker-compose.yml
+├── Dockerfile
+├── prometheus.yml
+├── requirements.txt
+├── README.md
+├── grafana/
+│   └── dashboards/
+│       └── tsdb.json
+├── tsdb/
+│   ├── __init__.py
+│   ├── chunk.py
+│   ├── timeseries.py
+│   ├── persistence.py
+│   ├── shard.py
+│   ├── monitoring.py
+│   ├── db.py
+│   └── api.py
+└── tests/
+    └── test_tsdb.py
